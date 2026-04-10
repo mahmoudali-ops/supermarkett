@@ -8,7 +8,7 @@ import { environment } from '../../environments/environments';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, FormsModule, ZXingScannerModule],
+   imports: [CommonModule, HttpClientModule, FormsModule, ZXingScannerModule],
     templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
