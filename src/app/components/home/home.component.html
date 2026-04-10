@@ -1,0 +1,53 @@
+<div class="scanner-container">
+  <h2 class="title">
+    <span class="icon">🛒</span>
+    <span class="brand">عبيد</span>
+    <span class="text">ماسح الباركود</span>
+  </h2>
+  @if (scannerEnabled) {
+    <div class="scanner-wrapper">
+      <zxing-scanner 
+        [formats]="allowedFormats"
+        [tryHarder]="true"
+        [autofocusEnabled]="true"
+        (scanSuccess)="onCodeResult($event)">
+      </zxing-scanner>
+      
+      <div class="laser-guide"></div>
+      <p class="status-text">ضع الباركود داخل الإطار</p>
+    </div>
+  }
+
+  @if (product) {
+    <div class="product-details card">
+      <div class="card-header">تم العثور على منتج</div>
+      
+      <div class="info-row">
+        <span class="label">اسم المنتج:</span>
+        <span class="value">{{ product.productName }}</span>
+      </div>
+      
+      <div class="info-row">
+        <span class="label">كود المنتج:</span>
+        <span class="value">{{ product.productCode }}</span>
+      </div>
+
+      <div class="edit-section">
+        <label>تعديل الكمية:</label>
+        <input type="number" [(ngModel)]="newQuantity" class="qty-input">
+      </div>
+
+      <div class="button-group">
+        <button (click) ="saveQuantity()" class="btn save-btn">حفظ وتحديث</button>
+        <button (click)="resetScanner()" class="btn cancel-btn">إلغاء ومسح جديد</button>
+      </div>
+    </div>
+  }
+</div>
+
+<div class="export-section" style="margin-top: 30px; text-align: center;">
+  <button (click)="exportToExcel()" class="btn-export">
+    <i class="fa fa-file-excel"></i> 
+    تحميل جرد المنتجات (Excel)
+  </button>
+</div>
