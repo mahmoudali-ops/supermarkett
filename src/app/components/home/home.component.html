@@ -20,7 +20,7 @@
 
   @if (product) {
     <div class="product-details card">
-      <div class="card-header">تم العثور على منتج</div>
+      <div class="card-header">تفاصيل المنتج</div>
       
       <div class="info-row">
         <span class="label">اسم المنتج:</span>
@@ -31,20 +31,47 @@
         <span class="label">كود المنتج:</span>
         <span class="value">{{ product.productCode }}</span>
       </div>
-
-      <div class="edit-section">
-        <label>تعديل الكمية:</label>
-        <input type="number" [(ngModel)]="newQuantity" class="qty-input">
+  
+      <div class="info-row current-stock">
+        <span class="label">الكمية الحالية بالمخزن:</span>
+        <span class="value-highlight">{{ product.quantity }}</span>
       </div>
-
+  
+      <hr class="divider">
+  
+      <div class="edit-section">
+        <label class="add-label">الكمية المراد إضافتها (+):</label>
+        <input 
+          type="number" 
+          [(ngModel)]="newQuantity" 
+          class="qty-input highlight-input" 
+          inputmode="numeric" 
+          placeholder="0"
+          pattern="[0-9]*">
+        <small class="hint">سيتم إضافة هذا الرقم للرصيد الحالي</small>
+      </div>
+  
       <div class="button-group">
-        <button (click) ="saveQuantity()" class="btn save-btn">حفظ وتحديث</button>
-        <button (click)="resetScanner()" class="btn cancel-btn">إلغاء ومسح جديد</button>
+        <button (click)="saveQuantity()" class="btn save-btn">تأكيد الإضافة</button>
+        <button (click)="resetScanner()" class="btn cancel-btn">إلغاء</button>
       </div>
     </div>
   }
 </div>
-
+<div class="manual-entry-section card">
+  <p class="section-divider"><span>أو</span></p>
+  
+  <div class="input-group">
+    <input 
+      type="text" 
+      [(ngModel)]="manualCode" 
+      placeholder="أدخل كود المنتج يدوياً..." 
+      class="manual-input"
+      (keyup.enter)="searchManually()"> <button (click)="searchManually()" class="btn-search">
+      بحث
+    </button>
+  </div>
+</div>
 <div class="export-section" style="margin-top: 30px; text-align: center;">
   <button (click)="exportToExcel()" class="btn-export">
     <i class="fa fa-file-excel"></i> 

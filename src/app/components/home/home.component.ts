@@ -31,21 +31,19 @@ export class HomeComponent {
 
   // دالة تُستدعى عند نجاح المسح
   onCodeResult(code: string) {
-    console.log('Code Scanned:', code);
-    this.scannerEnabled = false; // نقفل الكاميرا مؤقتاً
-
-    this.http.get(`${environment.BaseUrl}/${code}`).subscribe({
-      next: (data) => {
+    const scannedCode = code.trim();
+    this.http.get(`${environment.BaseUrl}/${scannedCode}`).subscribe({
+      next: (data: any) => {
         this.product = data;
-        this.newQuantity = this.product.quantity;
+        this.newQuantity = 0; // الحقل يبدأ بـ 0 أو فاضي للإضافة فقط
+        this.scannerEnabled = false;
       },
       error: (err) => {
-        alert('الكود اللي اتقرأ هو: ' + code + ' بس مش لاقيه في الداتا');   
-         this.resetScanner();
+        alert('المنتج غير موجود!');
+        this.resetScanner();
       }
     });
   }
-
   saveQuantity() {
     this.http.put(`${environment.BaseUrl}/update-quantity/${this.product.productCode}`, this.newQuantity)
       .subscribe({
@@ -84,4 +82,24 @@ export class HomeComponent {
       }
     });
   }
+
+
+  manualCode: string = ''; // متغير لحفظ الكود المدخل يدوياً
+
+// دالة البحث اليدوي
+searchManually() {
+  if (!this.manualCode || this.manualCode.trim() === '') {
+    alert('من فضلك أدخل كود المنتج أولاً');
+    return;
+  }
+  
+  const codeToSearch = this.manualCode.trim();
+  console.log('Searching Manually for:', codeToSearch);
+  
+  // بننادي على نفس الدالة اللي السكانر بيستخدمها عشان نوحد المنطق
+  this.onCodeResult(codeToSearch);
+  
+  // مسح الحقل بعد البحث
+  this.manualCode = '';
+}
 }

@@ -346,3 +346,152 @@
     transform: translateY(0);
   }
 }
+.section-divider {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  line-height: 0.1em;
+  margin: 20px 0;
+}
+
+.section-divider span {
+  background: #fff;
+  padding: 0 10px;
+  color: #7f8c8d;
+  font-weight: bold;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+}
+
+.manual-input {
+  flex: 2;
+  padding: 12px;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.manual-input:focus {
+  border-color: #2980b9;
+}
+
+.btn-search {
+  flex: 1;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-search:hover {
+  background-color: #2980b9;
+}
+/* إخفاء الأسهم في متصفحات Chrome, Safari, Edge, Opera */
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* إخفاء الأسهم في متصفح Firefox */
+.qty-input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;      /* الخاصية القياسية (Standard Property) */
+
+}
+
+/* تنسيق إضافي ليكون الحقل واضح */
+.qty-input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1.5rem; /* كبرنا الخط عشان يكون واضح في الموبايل */
+  text-align: center;
+  font-weight: bold;
+  color: #2c3e50;
+}
+.current-stock {
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 15px 0;
+  border-right: 5px solid #7f8c8d;
+}
+
+.value-highlight {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-right: 10px;
+}
+
+.add-label {
+  color: #27ae60; /* لون أخضر للإيحاء بالإضافة */
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.highlight-input {
+  border: 2px solid #27ae60 !important; /* تمييز حقل الإضافة */
+  background-color: #fafff1;
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid #eee;
+  margin: 20px 0;
+}
+
+.hint {
+  display: block;
+  color: #95a5a6;
+  font-size: 0.85rem;
+  margin-top: 5px;
+  text-align: center;
+}
+
+/* إخفاء الأسهم (Spinners) كما طلبنا سابقاً */
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* إخفاء الأسهم (Spinners) في متصفحات Chrome, Safari, Edge, Opera */
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button {
+  -webkit-appearance: none; /* خاص بمتصفحات Webkit */
+  margin: 0;
+}
+
+/* إخفاء الأسهم والتنسيق الافتراضي في Firefox والمتصفحات القياسية */
+.qty-input[type=number] {
+  -moz-appearance: textfield; /* خاص بمتصفح Firefox */
+  appearance: textfield;      /* الخاصية القياسية (Standard Property) */
+}
+
+/* تنسيق إضافي لضمان شكل الحقل */
+.qty-input {
+  /* لضمان إزالة أي تنسيق خاص بنظام التشغيل في بعض المتصفحات */
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  appearance: none;
+  
+  /* باقي التنسيقات الخاصة بك */
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #27ae60;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.5rem;
+}
